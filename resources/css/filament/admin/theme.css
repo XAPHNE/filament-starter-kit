@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+@source '../../../../vendor/slimani/filament-media-manager/resources/**/*';
+@import '../../../../vendor/slimani/filament-media-manager/resources/css/media-manager.css';
+
+@theme {
+    /* Slightly less rounded corners to match Flux UI */
+    --radius-xl: 0.5rem;
+    --radius-2xl: 0.5rem;
+}
+
+/* Base Flux style overrides for input rings, shadows and radii */
+.fi-input-wrp {
+    @apply rounded-md! shadow-sm! border-zinc-200! transition-shadow! transition-colors!;
+}
+.fi-input-wrp:focus-within {
+    @apply border-zinc-900! ring-1! ring-zinc-900!;
+}
+.dark .fi-input-wrp {
+    @apply border-zinc-700! bg-zinc-800!;
+}
+.dark .fi-input-wrp:focus-within {
+    @apply border-zinc-300! ring-1! ring-zinc-300!;
+}
+
+.fi-btn {
+    @apply rounded-md! font-medium! shadow-sm! transition-all!;
+}
+
+
+.fi-ta-content {
+    @apply rounded-lg! border! border-zinc-200! shadow-sm!;
+}
+.dark .fi-ta-content {
+    @apply border-zinc-800! bg-zinc-900!;
+}
+
+/* Force Flux UI Dark Mode aesthetic (white buttons) for primary actions */
+.dark .fi-btn.fi-color-custom {
+    --dark-bg: var(--color-white) !important;
+    --dark-text: var(--color-zinc-900) !important;
+    --dark-hover-bg: var(--color-zinc-200) !important;
+    --dark-hover-text: var(--color-zinc-900) !important;
+}
+.dark .fi-btn.fi-color-primary {
+    --dark-bg: var(--color-white) !important;
+    --dark-text: var(--color-zinc-900) !important;
+    --dark-hover-bg: var(--color-zinc-200) !important;
+    --dark-hover-text: var(--color-zinc-900) !important;
+}
+
+/* Sidebar and Topbar aesthetics */
+.fi-sidebar {
+    @apply border-r! border-zinc-200!;
+}
+.dark .fi-sidebar {
+    @apply border-zinc-800! bg-[#0E0E0F]!;
+}
+.fi-topbar {
+    @apply border-b! border-zinc-200! shadow-none!;
+}
+.dark .fi-topbar {
+    @apply border-zinc-800! bg-[#0E0E0F]!;
+}
+
+/* Flux UI Sidebar Nav Items Morphology */
+.fi-sidebar-group {
+    @apply flex flex-col gap-1;
+}
+.fi-sidebar-group-label {
+    @apply text-xs! font-semibold! text-zinc-500! px-2! dark:text-zinc-400!;
+}
+.fi-sidebar-item-btn {
+    @apply transition-colors! rounded-md! px-2.5! py-1.5! min-h-0! text-sm! font-medium! text-zinc-600! hover:text-zinc-900! hover:bg-zinc-100! dark:text-zinc-400! dark:hover:bg-zinc-800! dark:hover:text-zinc-100!;
+}
+.fi-active > .fi-sidebar-item-btn {
+    @apply bg-zinc-100! text-zinc-900! dark:bg-zinc-800! dark:text-zinc-100!;
+}
+.fi-sidebar-item-icon {
+    @apply size-4! text-zinc-400! transition-colors! dark:text-zinc-500!;
+}
+.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-icon {
+    @apply text-zinc-900! dark:text-zinc-100!;
+}
+.fi-sidebar-item-label {
+    @apply font-medium!;
+}
+
+
