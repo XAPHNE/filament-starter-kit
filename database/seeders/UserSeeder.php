@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('SuperSecret123!'),
                 'force_password_reset' => false,
                 'two_factor_type' => 'disabled',
+                'email_verified_at' => now(),
             ]
         );
 
