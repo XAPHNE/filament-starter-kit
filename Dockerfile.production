@@ -1,0 +1,30 @@
+# Use the matching PHP version with Alpine for a small footprint
+FROM php:8.3-cli-alpine
+
+# Install system dependencies required for extensions
+RUN apk add --no-cache \
+    icu-dev \
+    libzip-dev \
+    mariadb-dev \
+    sqlite-dev \
+    zip \
+    unzip \
+    git \
+    nodejs \
+    npm
+
+# Install PHP extensions required by Laravel, Filament, and Pulse
+RUN docker-php-ext-install \
+    intl \
+    bcmath \
+    pcntl \
+    pdo_mysql \
+    zip
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /app
+
+# Ensure we have a default command that honors the --host flag
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
