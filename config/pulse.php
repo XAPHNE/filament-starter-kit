@@ -122,6 +122,7 @@ return [
 
     'middleware' => [
         'web',
+        \App\Http\Middleware\DebugPulseAuth::class,
         Authorize::class,
     ],
 

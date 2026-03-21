@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
         );
 
         \Illuminate\Support\Facades\Gate::define('viewPulse', function (\App\Models\User $user) {
+            \Illuminate\Support\Facades\Log::debug('Pulse Authorization Check:', [
+                'user_id' => $user->id,
+                'is_super_admin' => $user->hasRole('Super Admin'),
+            ]);
             return $user->hasRole('Super Admin');
         });
     }
